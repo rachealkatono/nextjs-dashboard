@@ -6,7 +6,15 @@ import { lusitana } from '@/app/ui/fonts';
 import { fetchLatestInvoices, fetchCardData } from '@/app/lib/data';
 import { Suspense } from 'react';
 import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardsSkeleton } from '@/app/ui/skeletons';
- 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'Overview of your Acme Dashboard data and performance.',
+};
+
+
+
 export default async function Page() {
   const {
     numberOfInvoices,
@@ -22,6 +30,9 @@ export default async function Page() {
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Dashboard
       </h1>
+       <p className="text-gray-700">
+        Welcome to your dashboard. Here you can view key insights and data summaries for your account.
+      </p>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <Card title="Collected" value={totalPaidInvoices} type="collected" />
         <Card title="Pending" value={totalPendingInvoices} type="pending" />
